@@ -24,6 +24,17 @@ function wget_Download {
                 if [ $? -eq 0 ];
                 then
                     echo "Downloaded Wget package for Redhat OS"
+                        if [ $? -eq 0];
+                        then
+                            echo "Downloading Git for redhat"
+                            sudo yum install git
+                                if [ $? -eq 0 ];
+                                then 
+                                    echo "git Downloaded Git successfully"
+                                else
+                                    echo "Unable to download Git"
+                                    exit 1
+                                fi
                 else
                     echo "Unable to download Wget package for Redhat OS"
                     exit 1
@@ -35,15 +46,6 @@ function wget_Download {
                 if [ $? -eq 0 ];
                 then
                     echo "Downloaded Wget package for Ubuntu OS"
-                    #Downloading Git if package is Ubuntu
-                    sudo apt install git
-                            if [ $? -eq 0 ];
-                            then
-                                echo "Downloaded Git"
-                            else
-                                echo "Unable to download Git on Ubuntu machine"
-                                exit 1
-                            fi                
                 else
                     echo "Unable to download wget package for ubunut OS"
                     exit 1
